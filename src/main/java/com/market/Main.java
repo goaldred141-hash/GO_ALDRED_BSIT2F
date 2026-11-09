@@ -13,7 +13,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 /** Single entry point of the application. It only starts things up; no business logic here. */
-public class Main {
+public class
+Main {
 
     public static void main(String[] args) {
         // 1. Initialize the database (creates all tables, including activity_logs)

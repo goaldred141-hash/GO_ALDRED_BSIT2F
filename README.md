@@ -1,14 +1,20 @@
-# Public Market Price Monitoring System - Deliverable 5 - UserDao enhancements + Admin approval
+# Public Market Price Monitoring System (PF201 - IT2F)
 
-Roles (from the approved proposal): ADMIN (Market Administrator), OFFICER (Price Monitoring Officer), CONSUMER (Public Viewer).
+Console app: Java 17+, Maven, SQLite (sqlite-jdbc).
 
-## Run (IntelliJ IDEA + Maven)
-- File > Open > select this folder's pom.xml > Open as Project (Java 17+). Let Maven download dependencies.
-- Run `com.pmpms.Main` (right-click > Run). Database file `market.db` is created in the project root.
-- Or from a terminal: `mvn compile exec:java`
-- Default admin (auto-created): username `admin`, password `admin123`
+## Run in IntelliJ IDEA
+1. *File > Open* -> select this folder's `pom.xml` -> "Open as Project".
+2. Click the Maven **Reload** icon (downloads `sqlite-jdbc`).
+3. Open `src/main/java/com/market/Main.java` and press the green Run arrow.
+   (Or in the Terminal tab: `mvn compile exec:java`)
 
-## Demo / screenshots
-1. Register a user (option 2), then log in as admin / admin123.
-2. Admin menu: 2 (View Pending) then 3 (Approve) -> enter the user id.
-3. Screenshot 1: pending table, approval, success message. Screenshot 2: users table, status now APPROVED.
+The database file is `students.db` in this folder (it is also created automatically if missing).
+Open that same file in DB Browser for SQLite / SQLite Studio.
+
+## Default login
+`admin` / `admin123` (approved administrator). New registrations are PENDING until the admin approves them.
+
+## Quick demo flow (generates all 4 mandatory audit events)
+1. Register an Officer (menu 2) -> login as `admin` -> *3. Approve User Account*.
+2. Login as the Officer -> add commodity, register vendor, *Encode Daily Price*.
+3. Login as `admin` -> *4. Update User* (optional), *5. Validate Price Entries*, *6. View System Audit Logs*.
